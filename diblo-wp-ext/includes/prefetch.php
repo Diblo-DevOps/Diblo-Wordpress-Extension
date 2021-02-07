@@ -30,7 +30,7 @@ if ((bool) apply_filters('diblo_enable_prefetch_extension', false) === true) {
             }
         }
     }, 0);
-        
+
     remove_action('wp_head', 'wp_resource_hints', 2);
 }
 ?>

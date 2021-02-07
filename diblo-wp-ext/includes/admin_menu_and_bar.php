@@ -117,18 +117,16 @@
 // die if accessed directly
 defined('ABSPATH') || die('No direct script access allowed!');
 
-
 // re-order admin menu
-add_filter('custom_menu_order', function($custom) {
-    if (!empty((array) apply_filters('diblo_admin_menu_order', array()))) {
+add_filter('custom_menu_order', function ($custom) {
+    if (! empty((array) apply_filters('diblo_admin_menu_order', array()))) {
         return true;
     }
     return $custom;
 }, 9999);
-add_filter('menu_order', function($menu_order) {
+add_filter('menu_order', function ($menu_order) {
     return (array) apply_filters('diblo_admin_menu_order', array());
 }, 9999);
-
 
 // Resource page: https://www.easywebdesigntutorials.com/reorder-left-admin-menu-and-add-a-custom-user-role/
 add_action('admin_menu', function () {
@@ -138,17 +136,17 @@ add_action('admin_menu', function () {
     foreach ((array) apply_filters('diblo_add_admin_menu_items', array()) as &$menu_page) {
         call_user_func_array('add_menu_page', $menu_page);
     }
-        
+
     // Add separator
     $add_separators = apply_filters('diblo_add_admin_menu_separators', 0);
     if ($add_separators > 0) {
-        
+
         $separator_index = 0;
         foreach ($menu as &$m) {
             if (isset($m[2]) and strpos($m[2], 'separator') === 0)
                 $separator_index ++;
         }
-        
+
         $i = 0;
         while ($i < $add_separators) {
             $menu[] = array(
@@ -161,9 +159,10 @@ add_action('admin_menu', function () {
             $i ++;
         }
     }
-    
-    /* Remove
-     * 
+
+    /*
+     * Remove
+     *
      * remove_menu_page('edit-comments.php');
      * remove_submenu_page( 'themes.php', 'widgets.php' );
      * unset($submenu['themes.php'][6]); // remove customize links
@@ -172,26 +171,27 @@ add_action('admin_menu', function () {
         $c = count($id);
         if ($c == 1)
             remove_menu_page($id[0]);
-            elseif ($c == 2)
+        elseif ($c == 2)
             call_user_func_array('remove_submenu_page', $id);
     }
-    
-    /* Custom
-     * 
+
+    /*
+     * Custom
+     *
      * $menu[5][0] = 'New name';
      * $submenu['themes.php'][5][0] = 'New name';
      * Array
      * (
-     *     [0] => Array
-     *     (
-     *         [0] => Dashboard
-     *         [1] => read
-     *         [2] => index.php
-     *         [3] =>
-     *         [4] => menu-top menu-top-first menu-icon-dashboard
-     *         [5] => menu-dashboard
-     *         [6] => div
-     *     )
+     * [0] => Array
+     * (
+     * [0] => Dashboard
+     * [1] => read
+     * [2] => index.php
+     * [3] =>
+     * [4] => menu-top menu-top-first menu-icon-dashboard
+     * [5] => menu-dashboard
+     * [6] => div
+     * )
      * )
      */
     $change_admin_menu_items = (array) apply_filters('diblo_change_admin_menu_items', array());
@@ -210,7 +210,7 @@ add_action('wp_before_admin_bar_render', function () {
     foreach ((array) apply_filters('diblo_add_admin_bar_items', array()) as &$args) {
         $wp_admin_bar->add_node($args);
     }
-    
+
     // Remove
     foreach ((array) apply_filters('diblo_remove_admin_bar_items', array()) as &$id) {
         $wp_admin_bar->remove_node($id);

@@ -19,17 +19,17 @@ if ((bool) apply_filters('diblo_enable_enhance_email_info', false) === true) {
         $email_address = get_site_option('admin_email');
         if (! empty($email_address))
             return $email_address;
-            
-            return $original_email_address;
+
+        return $original_email_address;
     });
-        
+
     // Function to change sender name
     add_filter('wp_mail_from_name', function ($original_sender_name) {
         $sender_name = get_site_option('blogname');
         if (! empty($sender_name))
             return $sender_name;
-            
-            return $original_sender_name;
+
+        return $original_sender_name;
     });
 }
 ?>

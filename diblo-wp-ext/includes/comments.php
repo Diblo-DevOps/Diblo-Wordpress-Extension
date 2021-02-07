@@ -24,9 +24,9 @@ if ((bool) apply_filters('diblo_disable_comments', false) === true) {
             add_action('wp_enqueue_scripts', function () {
                 wp_deregister_script('comment-reply');
             });
-                remove_action('set_comment_cookies', 'wp_set_comment_cookies');
+            remove_action('set_comment_cookies', 'wp_set_comment_cookies');
         }
-        
+
         add_filter('diblo_remove_admin_bar_items', function ($array) {
             $array[] = 'comments';
             return $array;
