@@ -13,6 +13,20 @@ defined('ABSPATH') || die('No direct script access allowed!');
 define('DIBLO_WP_EXT_VERSION', '0.0.9');
 define('DIBLO_PLUGIN_DIR_PATH', plugin_dir_path(__FILE__));
 
+// Appends additional links
+if (is_admin()) {
+    add_filter('plugin_row_meta', function ($links_array, $plugin_file_name) {
+        if (strpos($plugin_file_name, basename(__FILE__))) {
+            $plugin_url = plugin_dir_url(__FILE__);
+            $links_array[] = '<a href="' . $plugin_url . 'about.html" target="_blank">About</a>';
+            $links_array[] = '<a href="' . $plugin_url . 'about.html#guide" target="_blank">Guide</a>';
+            $links_array[] = '<a href="' . $plugin_url . 'about.html#filters" target="_blank">Filters</a>';
+        }
+
+        return $links_array;
+    }, 10, 2);
+}
+
 /**
  * <head> clean up
  * 

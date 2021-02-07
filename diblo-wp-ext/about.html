@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>About Diblo Wordpress Extension</title>
+<style>
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 5px;
+}
+</style>
+</head>
+<body>
+	<h1>Diblo Wordpress Extension</h1>
+
+	<h2>What can it do</h2>
+	<h3>Image</h3>
+	<ul>
+		<li>Reduce Chroma sampling to 4:2:0 and set image quality</li>
+		<li>Enable progressive format for images over 10 kilobytes</li>
+		<li>Change path to auto-generate images</li>
+	</ul>
+
+	<h3>CSS & Scripts</h3>
+	<ul>
+		<li>Handle browser default style during page loading</li>
+		<li>Organize and combine style and scripts</li>
+	</ul>
+
+	<h3>Backend</h3>
+	<ul>
+		<li>Block update of one or more plugins and themes</li>
+		<li>Re-order administrator menu and bar</li>
+	</ul>
+
+	<h3>Other</h3>
+	<ul>
+		<li>Handle prefetch</li>
+		<li>Disable Emojis</li>
+		<li>Redirect attachment without a parent</li>
+		<li>Analysis scripts (Google and Facebook)</li>
+		<li>Fix Yoast default Twitter image</li>
+		<li>Optimize <a
+			href="https://da.wordpress.org/plugins/404-to-301/" target="_blank">404
+				to 301</a> plugin MySQL table
+		</li>
+	</ul>
+
+	<h2 id="guide">Guide</h2>
+	<p>
+		Create a <a
+			href="https://wordpress.org/support/article/must-use-plugins/"
+			target="_blank">Must Use Plugin</a> to add filters if a plugin has
+		not already been created for that purpose.
+	</p>
+
+	<p>Eks:</p>
+	<pre>
+        &#x3C;?php
+
+        defined(&#x27;ABSPATH&#x27;) || die(&#x27;No direct script access allowed!&#x27;);
+
+        add_filter( &#x27;diblo_remove_generator_tags&#x27;, &#x27;__return_true&#x27; );
+
+        add_filter( &#x27;diblo_chroma_sampling&#x27;, function ( $array ) {
+            [...]
+            return $array;
+        });
+
+        add_filter( &#x27;diblo_global_initialization_style&#x27;, function ( $string ) {
+            [...]
+            return $string; 
+        });
+
+        add_filter( &#x27;diblo_image_depth&#x27;, function ( $int ) {
+            [...]
+            return $int; 
+        });
+    </pre>
+
+	<h2 id="filters">Filters</h2>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Default</th>
+			<th>Description</th>
+		</tr>
+		<tr>
+			<td>diblo_remove_generator_tags</td>
+			<td>bool</td>
+			<td>false</td>
+			<td>Remove the "generator" meta tag from the document header and
+				from the RSS feeds</td>
+		</tr>
+		<tr>
+			<td>diblo_remove_wlwmanifest</td>
+			<td>bool</td>
+			<td>false</td>
+			<td>Remove the "wlwmanifest" link. wlwmanifest.xml is only
+				needed for Windows Live Writer</td>
+		</tr>
+		<tr>
+			<td>diblo_remove_rsd_api</td>
+			<td>bool</td>
+			<td>false</td>
+			<td>Remove the RSD. RDS is an API used for remote editing</td>
+		</tr>
+		<tr>
+			<td>diblo_remove_feeds</td>
+			<td>bool</td>
+			<td>false</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>diblo_remove_rest_api</td>
+			<td>bool</td>
+			<td>false</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>diblo_remove_shortlinks</td>
+			<td>bool</td>
+			<td>false</td>
+			<td>Remove short link references. Short link reference in the
+				document header indicates an abbreviated link to the page</td>
+		</tr>
+		<tr>
+			<td>diblo_remove_next_previous</td>
+			<td>bool</td>
+			<td>false</td>
+			<td>Remove a link to the next and previous post from the
+				document header</td>
+		</tr>
+		<tr>
+			<td>diblo_remove_emojis</td>
+			<td>bool</td>
+			<td>false</td>
+			<td>Disable WordPress emojis</td>
+		</tr>
+		<tr>
+			<td>diblo_chroma_sampling</td>
+			<td>array</td>
+			<td>array('2x2', '1x1', '1x1')</td>
+			<td>Set Chroma subsampling</td>
+		</tr>
+		<tr>
+			<td>diblo_image_resolution</td>
+			<td>array</td>
+			<td>96, 96</td>
+			<td>Set the image resolution in px/dots per inch (DPI)</td>
+		</tr>
+		<tr>
+			<td>diblo_image_depth</td>
+			<td>int</td>
+			<td>8</td>
+			<td>Set the image depth to 8, 16 or 32 bits</td>
+		</tr>
+		<tr>
+			<td>diblo_strip_meta</td>
+			<td>bool</td>
+			<td>true</td>
+			<td>Remove metadata from images to reduce image size</td>
+		</tr>
+		<tr>
+			<td>diblo_jpeg_quality</td>
+			<td>int</td>
+			<td>75</td>
+			<td>Set the JPEG image quality (0-100)</td>
+		</tr>
+		<tr>
+			<td>diblo_max_scale_up</td>
+			<td>int</td>
+			<td>0</td>
+			<td>See how much an image can be scaled up. The value is in
+				percentages. Ex. 20 is equal to 20% etc.</td>
+		</tr>
+		<tr>
+			<td>diblo_pre_generated_all_image_sizes</td>
+			<td>bool</td>
+			<td>true</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>diblo_pre_generated_sizes</td>
+			<td>array</td>
+			<td>array('thumbnail' => 1, 'medium' => 1, 'medium_large' => 1,
+				'large' => 1)</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>diblo_global_initialization_style</td>
+			<td>string</td>
+			<td>empty</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>diblo_remove_styles</td>
+			<td>array</td>
+			<td>empty</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>diblo_add_styles</td>
+			<td>array</td>
+			<td>empty</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>diblo_remove_scripts</td>
+			<td>array</td>
+			<td>empty</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>diblo_change_scripts</td>
+			<td>array</td>
+			<td>empty</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>diblo_add_scripts</td>
+			<td>array</td>
+			<td>empty</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>diblo_inline_footer_before</td>
+			<td>string</td>
+			<td>empty</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>diblo_inline_footer_after</td>
+			<td>string</td>
+			<td>empty</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>diblo_enable_non_block_style</td>
+			<td>bool</td>
+			<td>false</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>diblo_inline_style_before</td>
+			<td>string</td>
+			<td>empty</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>diblo_inline_style_after</td>
+			<td>string</td>
+			<td>empty</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>diblo_enable_prefetch_extension</td>
+			<td>bool</td>
+			<td>false</td>
+			<td>Overwrite WordPress prefetch</td>
+		</tr>
+		<tr>
+			<td>diblo_prefetch_domain_list</td>
+			<td>array</td>
+			<td>empty</td>
+			<td>Specify own prefetch list (Requires
+				diblo_enable_prefetch_extension enabled)</td>
+		</tr>
+		<tr>
+			<td>diblo_disable_comments</td>
+			<td>bool</td>
+			<td>false</td>
+			<td>Disable comment</td>
+		</tr>
+		<tr>
+			<td>diblo_google_id</td>
+			<td>string</td>
+			<td>empty</td>
+			<td>Specify Google Analytics Tracking ID</td>
+		</tr>
+		<tr>
+			<td>diblo_facebook_pixel_id</td>
+			<td>string</td>
+			<td>empty</td>
+			<td>Specify Facebook Pixel ID</td>
+		</tr>
+		<tr>
+			<td>diblo_optimize_404_to_301</td>
+			<td>bool</td>
+			<td>false</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>diblo_block_theme_updates</td>
+			<td>array</td>
+			<td>empty</td>
+			<td>Block update of one or more themes</td>
+		</tr>
+		<tr>
+			<td>diblo_block_plugin_updates</td>
+			<td>array</td>
+			<td>empty</td>
+			<td>Block update of one or more plugins</td>
+		</tr>
+		<tr>
+			<td>diblo_admin_menu_order</td>
+			<td>array</td>
+			<td>empty</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>diblo_remove_admin_menu_items</td>
+			<td>array</td>
+			<td>empty</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>diblo_change_admin_menu_items</td>
+			<td>array</td>
+			<td>empty</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>diblo_add_admin_menu_items</td>
+			<td>array</td>
+			<td>empty</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>diblo_add_admin_menu_separators</td>
+			<td>int</td>
+			<td>0</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>diblo_remove_admin_bar_items</td>
+			<td>array</td>
+			<td>empty</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>diblo_add_admin_bar_items</td>
+			<td>array</td>
+			<td>empty</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>diblo_change_admin_bar_items</td>
+			<td>array</td>
+			<td>empty</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>diblo_admin_bar_order</td>
+			<td>array</td>
+			<td>empty</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>diblo_redirect_all_attachment</td>
+			<td>bool</td>
+			<td>false</td>
+			<td>Redirect all attachments to the page where they are used, or
+				the front page if the file is not used</td>
+		</tr>
+		<tr>
+			<td>diblo_redirect_attachment_with_no_parent</td>
+			<td>bool</td>
+			<td>false</td>
+			<td>Redirect only attachments that are not being used</td>
+		</tr>
+		<tr>
+			<td>diblo_enable_trash_unknownfiles</td>
+			<td>bool</td>
+			<td>false</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>diblo_unknownfiles_disable_empty_trash</td>
+			<td>bool</td>
+			<td>false</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>diblo_enable_enhance_email_info</td>
+			<td>bool</td>
+			<td>false</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>diblo_fix_yoast_default_twitter_image</td>
+			<td>bool</td>
+			<td>false</td>
+			<td>This corrects the missing option to set a default Twitter
+				image in Yoast</td>
+		</tr>
+		<tr>
+			<td>diblo_autogen_title_tags</td>
+			<td>bool</td>
+			<td>false</td>
+			<td>This adds title tag to links</td>
+		</tr>
+	</table>
+
+	<h2 id="constants">Constants (belong in wp-config.php)</h2>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Default</th>
+			<th>Description</th>
+		</tr>
+		<tr>
+			<td>AUTO_GEN_IMAGE_FOLDER</td>
+			<td>string</td>
+			<td>resized</td>
+			<td>Enter the folder name of the folder where scaled images are
+				to be placed</td>
+		</tr>
+		<tr>
+			<td>TRASH_UNKNOWNFILES_DAYS</td>
+			<td>int</td>
+			<td>90</td>
+			<td>Number of days before an unknown file is moved to the
+				Recycle Bin</td>
+		</tr>
+		<tr>
+			<td>UNKNOWNFILES_EMPTY_TRASH_DAYS</td>
+			<td>int</td>
+			<td>90</td>
+			<td>Number of days that an unknown file is in the Recycle Bin
+				before it is deleted</td>
+		</tr>
+	</table>
+</body>
