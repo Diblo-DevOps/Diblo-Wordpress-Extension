@@ -148,3 +148,11 @@ require_once DIBLO_PLUGIN_DIR_PATH . 'includes/clean_unknownfiles.php';
  *  diblo_enable_enhance_email_info: (bool) false
  */
 require_once DIBLO_PLUGIN_DIR_PATH . 'includes/mails.php';
+
+/**
+ * Twitter
+ *
+ * Filters:
+ * diblo_fix_yoast_default_twitter_image: (bool) false
+ */
+require_once DIBLO_PLUGIN_DIR_PATH . 'includes/twitter.php';
