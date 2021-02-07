@@ -156,3 +156,11 @@ require_once DIBLO_PLUGIN_DIR_PATH . 'includes/mails.php';
  * diblo_fix_yoast_default_twitter_image: (bool) false
  */
 require_once DIBLO_PLUGIN_DIR_PATH . 'includes/twitter.php';
+
+/**
+ * Add title tag
+ *
+ * Filters:
+ * diblo_autogen_title_tags: (bool) false
+ */
+require_once DIBLO_PLUGIN_DIR_PATH . 'includes/title_tag.php';
