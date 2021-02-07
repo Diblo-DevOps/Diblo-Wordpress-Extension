@@ -50,7 +50,7 @@ defined('AUTO_GEN_IMAGE_FOLDER') || define('AUTO_GEN_IMAGE_FOLDER', 'resized'); 
 require_once ABSPATH . WPINC . '/class-wp-image-editor.php';
 require_once ABSPATH . WPINC . '/class-wp-image-editor-gd.php';
 require_once ABSPATH . WPINC . '/class-wp-image-editor-imagick.php';
-require_once DIBLO_PLUGIN_DIR_PATH . 'libs/class-wp-image-editor-gmagick.php';
+require_once DIBLO_WP_EXT_ROOT . 'libs/class-wp-image-editor-gmagick.php';
 
 function is_gd($image)
 {

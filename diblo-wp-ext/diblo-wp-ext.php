@@ -14,8 +14,8 @@ if (! defined('DIBLO_WP_EXT_VERSION')) {
     define('DIBLO_WP_EXT_VERSION', '0.1.0');
 }
 
-if (! defined('DIBLO_PLUGIN_DIR_PATH')) {
-    define('DIBLO_PLUGIN_DIR_PATH', plugin_dir_path(__FILE__));
+if (! defined('DIBLO_WP_EXT_ROOT')) {
+    define('DIBLO_WP_EXT_ROOT', plugin_dir_path(__FILE__));
 }
 
 // Appends additional links
@@ -45,7 +45,7 @@ if (is_admin()) {
  * diblo_remove_next_previous: (bool) false
  * diblo_remove_emojis: (bool) false
  */
-require_once DIBLO_PLUGIN_DIR_PATH . 'includes/head_clean_up.php';
+require_once DIBLO_WP_EXT_ROOT . 'includes/head_clean_up.php';
 
 /**
  * Images
@@ -60,7 +60,7 @@ require_once DIBLO_PLUGIN_DIR_PATH . 'includes/head_clean_up.php';
  * diblo_pre_generated_all_image_sizes: (bool) true
  * diblo_pre_generated_sizes: (array) 'thumbnail' => 1, 'medium' => 1, 'medium_large' => 1, 'large' => 1
  */
-require_once DIBLO_PLUGIN_DIR_PATH . 'includes/images.php';
+require_once DIBLO_WP_EXT_ROOT . 'includes/images.php';
 
 /**
  * Style and script
@@ -78,7 +78,7 @@ require_once DIBLO_PLUGIN_DIR_PATH . 'includes/images.php';
  * diblo_inline_style_before: (string) empty
  * diblo_inline_style_after: (string) empty
  */
-require_once DIBLO_PLUGIN_DIR_PATH . 'includes/style_and_script.php';
+require_once DIBLO_WP_EXT_ROOT . 'includes/style_and_script.php';
 
 /**
  * Prefetch
@@ -87,7 +87,7 @@ require_once DIBLO_PLUGIN_DIR_PATH . 'includes/style_and_script.php';
  * diblo_enable_prefetch_extension: (bool) false
  * diblo_prefetch_domain_list: (array) empty
  */
-require_once DIBLO_PLUGIN_DIR_PATH . 'includes/prefetch.php';
+require_once DIBLO_WP_EXT_ROOT . 'includes/prefetch.php';
 
 /**
  * Disable comments
@@ -95,7 +95,7 @@ require_once DIBLO_PLUGIN_DIR_PATH . 'includes/prefetch.php';
  * Filters:
  * diblo_disable_comments: (bool) false
  */
-require_once DIBLO_PLUGIN_DIR_PATH . 'includes/comments.php';
+require_once DIBLO_WP_EXT_ROOT . 'includes/comments.php';
 
 /**
  * Analysis
@@ -104,7 +104,7 @@ require_once DIBLO_PLUGIN_DIR_PATH . 'includes/comments.php';
  * diblo_google_id: (string) empty
  * diblo_facebook_pixel_id: (string) empty
  */
-require_once DIBLO_PLUGIN_DIR_PATH . 'includes/analysis.php';
+require_once DIBLO_WP_EXT_ROOT . 'includes/analysis.php';
 
 /**
  * Optimize mysql table 404_to_301
@@ -112,7 +112,7 @@ require_once DIBLO_PLUGIN_DIR_PATH . 'includes/analysis.php';
  * Filters:
  * diblo_optimize_404_to_301: (bool) false
  */
-require_once DIBLO_PLUGIN_DIR_PATH . 'includes/ext_404_to_301_plugin.php';
+require_once DIBLO_WP_EXT_ROOT . 'includes/ext_404_to_301_plugin.php';
 
 /**
  * Block updates of specific plugins or themes
@@ -121,7 +121,7 @@ require_once DIBLO_PLUGIN_DIR_PATH . 'includes/ext_404_to_301_plugin.php';
  * diblo_block_theme_updates: (array) empty
  * diblo_block_plugin_updates: (array) empty
  */
-require_once DIBLO_PLUGIN_DIR_PATH . 'includes/block_updates.php';
+require_once DIBLO_WP_EXT_ROOT . 'includes/block_updates.php';
 
 /**
  * Admin menu and bar
@@ -137,7 +137,7 @@ require_once DIBLO_PLUGIN_DIR_PATH . 'includes/block_updates.php';
  * diblo_change_admin_bar_items: (array) empty
  * diblo_admin_bar_order: (array) empty
  */
-require_once DIBLO_PLUGIN_DIR_PATH . 'includes/admin_menu_and_bar.php';
+require_once DIBLO_WP_EXT_ROOT . 'includes/admin_menu_and_bar.php';
 
 /**
  * Redirect attachment
@@ -146,7 +146,7 @@ require_once DIBLO_PLUGIN_DIR_PATH . 'includes/admin_menu_and_bar.php';
  * diblo_redirect_all_attachment: (bool) false
  * diblo_redirect_attachment_with_no_parent: (bool) false
  */
-require_once DIBLO_PLUGIN_DIR_PATH . 'includes/attachment.php';
+require_once DIBLO_WP_EXT_ROOT . 'includes/attachment.php';
 
 /**
  * Clean unknownfiles
@@ -158,7 +158,7 @@ require_once DIBLO_PLUGIN_DIR_PATH . 'includes/attachment.php';
  * TRASH_UNKNOWNFILES_DAYS: (int) 90
  * UNKNOWNFILES_EMPTY_TRASH_DAYS: (int) 90
  */
-require_once DIBLO_PLUGIN_DIR_PATH . 'includes/clean_unknownfiles.php';
+require_once DIBLO_WP_EXT_ROOT . 'includes/clean_unknownfiles.php';
 
 /**
  * Fix mail info
@@ -166,7 +166,7 @@ require_once DIBLO_PLUGIN_DIR_PATH . 'includes/clean_unknownfiles.php';
  * Filters:
  * diblo_enable_enhance_email_info: (bool) false
  */
-require_once DIBLO_PLUGIN_DIR_PATH . 'includes/mails.php';
+require_once DIBLO_WP_EXT_ROOT . 'includes/mails.php';
 
 /**
  * Twitter
@@ -174,7 +174,7 @@ require_once DIBLO_PLUGIN_DIR_PATH . 'includes/mails.php';
  * Filters:
  * diblo_fix_yoast_default_twitter_image: (bool) false
  */
-require_once DIBLO_PLUGIN_DIR_PATH . 'includes/twitter.php';
+require_once DIBLO_WP_EXT_ROOT . 'includes/twitter.php';
 
 /**
  * Add title tag
@@ -182,4 +182,4 @@ require_once DIBLO_PLUGIN_DIR_PATH . 'includes/twitter.php';
  * Filters:
  * diblo_autogen_title_tags: (bool) false
  */
-require_once DIBLO_PLUGIN_DIR_PATH . 'includes/title_tag.php';
+require_once DIBLO_WP_EXT_ROOT . 'includes/title_tag.php';
