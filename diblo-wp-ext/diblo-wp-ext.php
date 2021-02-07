@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: Diblo Wordpress Extension
- * Description: Reduce Chroma sampling to 4:2:0 and set image quality. Enable progressive format for images over 10k bytes. Change path to auto-generate images. Organize and combine style and scripts. Fix browser default style during page loading. Handle prefetch. Disable Emojis. Analysis (Google and Facebook). Optimize plugin '404 to 301' table. Block update of one or more plugins and themes. Re-order administrator menu and bar. Redirect attachment without a parent.
  * Version: 0.0.9
+ * Description: Optimize, fix and add features to WordPress
  * Author: Henrik Ankersø
  * Author URI: https://www.diblo.dk/
  */
