@@ -1,10 +1,12 @@
 <?php
 /**
  * Plugin Name: Diblo Wordpress Extension
- * Version: 0.0.9
  * Description: Optimize, fix and add features to WordPress
+ * Version: 0.1.0
  * Author: Henrik Ankersø
  * Author URI: https://www.diblo.dk/
+ * License: MIT
+ * License URI: https://opensource.org/licenses/MIT
  */
 
 // die if accessed directly
@@ -59,6 +61,9 @@ require_once DIBLO_WP_EXT_ROOT . 'includes/head_clean_up.php';
  * diblo_max_scale_up: (int) 0
  * diblo_pre_generated_all_image_sizes: (bool) true
  * diblo_pre_generated_sizes: (array) 'thumbnail' => 1, 'medium' => 1, 'medium_large' => 1, 'large' => 1
+ *
+ * Constants:
+ * AUTO_GEN_IMAGE_FOLDER: (string) resized
  */
 require_once DIBLO_WP_EXT_ROOT . 'includes/images.php';
 
