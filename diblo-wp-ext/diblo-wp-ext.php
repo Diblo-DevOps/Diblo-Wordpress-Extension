@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Diblo Wordpress Extension
  * Description: Optimize, fix and add features to WordPress
- * Version: 0.1.0
+ * Version: 0.1.1
  * Author: Henrik Ankersø
  * Author URI: https://www.diblo.dk/
  * License: MIT
@@ -13,7 +13,7 @@
 defined('ABSPATH') || die('No direct script access allowed!');
 
 if (! defined('DIBLO_WP_EXT_VERSION')) {
-    define('DIBLO_WP_EXT_VERSION', '0.1.0');
+    define('DIBLO_WP_EXT_VERSION', '0.1.1');
 }
 
 if (! defined('DIBLO_WP_EXT_ROOT')) {
